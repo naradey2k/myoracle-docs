@@ -1,0 +1,14 @@
+torchvision
+torchaudio
+transformers
+datasets
+huggingface_hub
+pillow
+accelerate
+pandas
+pyarrow==10
+nltk
+torchsummary
+matplotlib
+opencv-python
+timm
