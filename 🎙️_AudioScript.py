@@ -13,12 +13,10 @@ st.set_page_config(
     page_icon="📈",
     layout="wide"
 )
-# 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
-# openai.api_key = st.secrets['API_KEY_OPENAI']
-openai.api_key = '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'
+
+openai.api_key = st.secrets['API_KEY_OPENAI']
 
 def create_prompt(transcript):
-    # content = 'Pretend you are an expert in every subject and you have best skills to find key points of the text and summarize text. '
     prompt = f"""Create a list of five important and short points and brief summary of the given text: "{transcript}". Also add the semantic classification of the test, as positive or negative
         Do not include any explanations, only provide a compliant JSON response following this format without deviation."""
     json_prompt = """{"key_points": ["important key points"], "brief_summary": "brief summary", "class_semantic": "class"}"""
@@ -26,7 +24,7 @@ def create_prompt(transcript):
     final = prompt + json_prompt
 
     return final
-
+    
 def openai_create(prompt):
     response = openai.ChatCompletion.create(
         model='gpt-3.5-turbo',
@@ -61,8 +59,7 @@ st.info('Supports all popular audio formats - WAV, MP3, MP4, OGG, WMA, AAC, FLAC
 
 with st.sidebar:
     st.error('Note that uploaded files and recorded audios are not stored in any databases and not saved in ChatGPT\'s chat')
-    # st.sidebar.write("""---""") 
-
+    
 upload_type = st.sidebar.radio(
         "Choose the uploading type of audio:",
         ('File', 'Record from Browser')
